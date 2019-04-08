@@ -19,17 +19,20 @@ function checkInput () {
 }
 
 function updateText () {
-    if (input.value.parseInt > randomNumber){
+    if (parseInt(input.value) > randomNumber){
         hintText.innerHTML=`demasiado alto`;
-    } else if (input.balue < randomNumber){
-        hintText.innerHTML=`demasiado bajo`;
-    } else {
+    } else if (parseInt(input.value) === randomNumber){
         hintText.innerHTML="¡HAS GANADO, CAMPEONA!";
+    } else {
+        hintText.innerHTML=`demasiado bajo`;
     }
 }
 
 function addRound () {
+    if (input.value) {
     roundValue = roundValue + 1;
+    round.innerHTML = roundValue;
+    }
 }
 
 function playGame () {
