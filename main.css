@@ -1,4 +1,23 @@
 .base {
     background-color: lightgrey;
     text-align: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.intento {
+    margin:0;
+    color: red;
+    font-size: 40px;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+.hint-text {
+    padding: 10px;
+    border: 1px solid blue;
+    color: blue;
 }
