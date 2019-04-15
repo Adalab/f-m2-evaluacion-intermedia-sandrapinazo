@@ -1,13 +1,15 @@
-"use strict";
+'use strict';
+
 const input = document.querySelector("#number");
 const btnPrueba = document.querySelector(".button-prueba");
-const randomNumber = getRandomNumber(100);
 const hintText = document.querySelector(".hint-text");
 const round = document.querySelector(".intento");
-let roundValue = 0;
-console.log(input);
-console.log(btnPrueba);
+
+const randomNumber = getRandomNumber(100);
 console.log(randomNumber);
+
+let roundValue = 0;
+
 
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
@@ -15,16 +17,22 @@ function getRandomNumber(max) {
 
 function checkInput () {
     console.log(input.value);
-    console.log("click");
+}
+
+function printText (text) {
+    hintText.innerHTML = text;
 }
 
 function updateText () {
     if (parseInt(input.value) > randomNumber){
-        hintText.innerHTML=`demasiado alto`;
+        if (parseInt(input.value) > 100){
+            printText ('¡Debe ser menor que 100!');
+        }
+        printText ('Demasiado alto');
     } else if (parseInt(input.value) === randomNumber){
-        hintText.innerHTML="¡HAS GANADO, CAMPEONA!";
+        printText ('¡HAS GANADO, CAMPEONA!');
     } else {
-        hintText.innerHTML=`demasiado bajo`;
+        printText ('Demasiado bajo');
     }
 }
 
@@ -40,4 +48,13 @@ function playGame () {
     updateText();
     addRound();
 }
+
 btnPrueba.addEventListener("click", playGame);
+
+function handlerEnter (event) {
+    if (event.key === 'Enter') {
+        playGame();
+    }
+}
+
+input.addEventListener('keyup', handlerEnter);
